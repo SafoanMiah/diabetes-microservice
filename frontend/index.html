@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Microservices AE2</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='frontend/templates/styles.css') }}">
     <script>
         tailwind.config = {
             theme: {
@@ -84,7 +84,7 @@
     </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="{{ url_for('static', filename='frontend/templates/script.js') }}"></script>
 </body>
 
 <!-- Footer -->
