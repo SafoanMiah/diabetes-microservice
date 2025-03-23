@@ -6,14 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Microservices AE2</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='frontend/templates/styles.css') }}">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {}
-            }
-        }
-    </script>
+    <!--Had to be URL thus the mode to static-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
 <body class="bg-zinc-900">
@@ -83,8 +77,6 @@
         </form>
     </div>
     </div>
-
-    <script src="{{ url_for('static', filename='frontend/templates/script.js') }}"></script>
 </body>
 
 <!-- Footer -->
