@@ -1,5 +1,3 @@
-import pandas as pd
-import numpy as np
 from abc import ABC, abstractmethod
 
 class DataPreProcessing:
@@ -37,6 +35,10 @@ class DataPreProcessingBuilder:
         self.processors.append(ConversiontoFloats())
         return self
 
+    def drop_column(self, column):
+        self.processors.append(DropColumn(column))
+        return self
+
     def build(self):
         return DataPreProcessing(self.data, self.processors) #puts all the components together by giving an instance of the DataProcessing
         # class the necessary instance variables to actually produce something
@@ -60,3 +62,9 @@ class RemoveDuplicates(DataProcessor):
 class ConversiontoFloats(DataProcessor):
     def process(self,data):
         return data.astype(float) #will remove rows based on whether the entire row is a duplicate. There will be columns such as Aggregate, date and even the cpih where multiple rows have the same values.
+
+class DropColumn(DataProcessor):
+    def __init__(self,column):
+        self.column = column
+    def process(self,data):
+        return data.drop([self.column], axis = 1)
