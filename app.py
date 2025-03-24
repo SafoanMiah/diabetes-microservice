@@ -9,10 +9,5 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/altair")
-def altair():
-    return render_template("altair.html")
-
-
 if __name__ == '__main__':
     app.run()
