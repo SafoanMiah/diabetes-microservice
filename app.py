@@ -16,7 +16,7 @@ def predict():
     try:
         # Extract all the information from the form
         form_data = {
-            'age': float(request.form["age"]),
+            'age': float(request.form["agesssssssssssss"]),
             'sex': int(request.form["sex"]),
             'bmi': float(request.form["bmi"]),
             'bp': float(request.form["bp"]),

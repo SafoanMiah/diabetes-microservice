@@ -1,7 +1,9 @@
+<!-- 
 Page shown on sucessful prediction, it contains:
 - Inputted details
 - Risk of diabetes
 - Visualizations using altair
+-->
 
 
 {% extends "base.html" %}
@@ -18,7 +20,7 @@ Page shown on sucessful prediction, it contains:
 {% block content %}
 
 <div class="bg-white rounded-lg p-6 mb-8">
-    <h3 class="text-2xl font-bold mb-6 text-gray-800">Prediction & Analysis</h3>
+    <h3 class="subheader">Prediction & Analysis</h3>
     
     <!-- Prediction Result -->
     <div class="mb-8">
@@ -49,6 +51,7 @@ Page shown on sucessful prediction, it contains:
                 <span class="font-semibold">Age:</span> {{ form_data.age }} years
             </div>
             <div class="input-show">
+                <!-- Revert back to string format-->
                 <span class="font-semibold">Sex:</span> {{ 'Male' if form_data.sex == 1 else 'Female' }}
             </div>
             <div class="input-show">

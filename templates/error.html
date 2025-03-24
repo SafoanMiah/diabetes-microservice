@@ -1,4 +1,4 @@
-Page is shown when there is an error along side the erro message {{ error }}
+<!-- Page is shown when there is an error along side the erro message {{ error }} -->
 
 {% extends "base.html" %}
 
@@ -7,16 +7,16 @@ Page is shown when there is an error along side the erro message {{ error }}
 {% block content %}
 <!-- Error Section -->
 <div class="bg-white rounded-lg p-6 mb-8">
-    <h3 class="text-2xl font-bold mb-6 text-gray-800">Error</h3>
+    <h3 class="subheader">Error</h3>
     
     <div class="bg-yellow-100 text-yellow-800 p-6 rounded-lg text-center mb-8">
         <p class="text-xl mb-2">Something went wrong</p>
         <p>{{ error }}</p>
     </div>
     
-    <div class="text-center">
-        <a href="/" class="bg-emerald-600 text-white py-2 px-4 rounded-lg hover:bg-emerald-700">
-            Return to Home Page
+    <div class="flex">
+        <a href="/" class="submit-button">
+            Return to Form
         </a>
     </div>
 </div>

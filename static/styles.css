@@ -40,3 +40,10 @@
 .submit-button:hover {
     background-color: #047857;
 }
+
+.subheader {
+    color: #1b2635;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
