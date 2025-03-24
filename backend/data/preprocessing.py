@@ -35,6 +35,10 @@ class DataPreProcessingBuilder:
         self.processors.append(ConversiontoFloats())
         return self
 
+    def white_spaces(self):
+        self.processors.append(WhitespaceCleaner())
+        return self
+
     def drop_column(self, column):
         self.processors.append(DropColumn(column))
         return self
@@ -61,10 +65,14 @@ class RemoveDuplicates(DataProcessor):
 
 class ConversiontoFloats(DataProcessor):
     def process(self,data):
-        return data.astype(float) #will remove rows based on whether the entire row is a duplicate. There will be columns such as Aggregate, date and even the cpih where multiple rows have the same values.
+        return data.astype(float)
+
+class WhitespaceCleaner(DataProcessor):
+    def process (self, data):
+        return data.strip()
 
 class DropColumn(DataProcessor):
     def __init__(self,column):
-        self.column = column
+        self.column = column #the way the processor is set up is it's a loop that will apply to the entire dataframe and so the picking of a specific column to drop is easier implemented here.
     def process(self,data):
         return data.drop([self.column], axis = 1)
