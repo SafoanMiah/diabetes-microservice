@@ -1,0 +1,93 @@
+Page shown on sucessful prediction, it contains:
+- Inputted details
+- Risk of diabetes
+- Visualizations using altair
+
+
+{% extends "base.html" %}
+
+{% block title %}Prediction Results{% endblock %}
+
+{% block extra_head %}
+<!-- Vega for Altair visualizations -->
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="bg-white rounded-lg p-6 mb-8">
+    <h3 class="text-2xl font-bold mb-6 text-gray-800">Prediction & Analysis</h3>
+    
+    <!-- Prediction Result -->
+    <div class="mb-8">
+
+        <!-- 1 High Risk, 0 Low Risk-->
+
+        {% if prediction == 1 %}
+        <div class="bg-red-100 text-red-700 p-4 rounded-lg">
+            <p class="font-bold text-xl">High Risk of Diabetes</p>
+            <p>Based on the parameters input, the model predicts a high risk of diabetes</p>
+        </div>
+
+        {% else %}
+        <div class="bg-green-100 text-green-700 p-4 rounded-lg">
+            <p class="font-bold text-xl">Low Risk of Diabetes</p>
+            <p>Based on the provided parameters, the model predicts a low risk of diabetes.</p>
+        </div>
+
+        {% endif %}
+    </div>
+    
+    <!-- Input Parameters -->
+    <div class="mb-8">
+        <h4 class="font-bold text-lg mb-4">Previously Input Parameters</h4>
+
+        <div class="grid grid-cols-2 gap-4">
+            <div class="input-show">
+                <span class="font-semibold">Age:</span> {{ form_data.age }} years
+            </div>
+            <div class="input-show">
+                <span class="font-semibold">Sex:</span> {{ 'Male' if form_data.sex == 1 else 'Female' }}
+            </div>
+            <div class="input-show">
+                <span class="font-semibold">BMI:</span> {{ form_data.bmi }} kg/m²
+            </div>
+            <div class="input-show">
+                <span class="font-semibold">Blood Pressure:</span> {{ form_data.bp }} mmHg
+            </div>
+            <div class="input-show">
+                <span class="font-semibold">Total Cholesterol:</span> {{ form_data.tc }} mmol/L
+            </div>
+            <div class="input-show">
+                <span class="font-semibold">LDL:</span> {{ form_data.ldl }} mmol/L
+            </div>
+            <div class="input-show">
+                <span class="font-semibold">HDL:</span> {{ form_data.hdl }} mmol/L
+            </div>
+            <div class="input-show">
+                <span class="font-semibold">TC/HDL Ratio:</span> {{ form_data.tch }}
+            </div>
+            <div class="input-show">
+                <span class="font-semibold">Log Triglycerides:</span> {{ form_data.ltg }}
+            </div>
+            <div class="input-show">
+                <span class="font-semibold">Blood Sugar:</span> {{ form_data.glu }} mmol/L
+            </div>
+        </div>
+    </div>
+    
+    <!-- Visualization Container -->
+    <h4 class="font-bold text-lg mb-4">Visualization</h4>
+    <div id="visualization" class="w-full h-96 mb-4 bg-gray-100 flex items-center justify-center">
+        <p class="text-gray-500">Temaplte for visualization div</p>
+    </div>
+    
+    <div class="flex">
+        <a href="/" class="submit-button">
+            Return to Form
+        </a>
+    </div>
+</div>
+{% endblock %}
