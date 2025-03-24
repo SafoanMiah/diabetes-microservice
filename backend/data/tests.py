@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import pytest
 
-# Adjust the imports below to match your project structure.
+# Adjusting the imports below to match your project structure.
 from preprocessing import (
     DataPreProcessingBuilder,
     DataPreProcessing,
