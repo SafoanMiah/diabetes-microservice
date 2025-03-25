@@ -43,6 +43,10 @@ class DataPreProcessingBuilder:
         self.processors.append(DropColumn(column))
         return self
 
+    def rename_column(self, column, new_column):
+        self.processors.append(RenameColumn(column, new_column))
+        return self
+
     def build(self):
         return DataPreProcessing(self.data, self.processors) #puts all the components together by giving an instance of the DataProcessing
         # class the necessary instance variables to actually produce something
@@ -76,3 +80,10 @@ class DropColumn(DataProcessor):
         self.column = column #the way the processor is set up is it's a loop that will apply to the entire dataframe and so the picking of a specific column to drop is easier implemented here.
     def process(self,data):
         return data.drop([self.column], axis = 1)
+
+class RenameColumn(DataProcessor):
+    def __init__(self,column, new_name):
+        self.column = column #the way the processor is set up is it's a loop that will apply to the entire dataframe and so the picking of a specific column to drop is easier implemented here.
+        self.new_name = new_name
+    def process(self,data):
+        return data.rename(columns = { self.column, self.new_name}, inplace = True)
