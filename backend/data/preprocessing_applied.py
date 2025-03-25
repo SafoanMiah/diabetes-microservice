@@ -7,5 +7,5 @@ import loader
 df = loader.df
 builder = pp.DataPreProcessingBuilder()
 
-cleaning = builder.load_df(df).null_data().remove_duplicates().to_float().build()
+cleaning = builder.load_df(df).null_data().remove_duplicates().rename_column("s1", "tc").to_float().build()
 cleaned_df = cleaning.clean()

@@ -77,4 +77,4 @@ class RenameColumn(DataProcessor):
         self.column = column #the way the processor is set up is it's a loop that will apply to the entire dataframe and so the picking of a specific column to drop is easier implemented here.
         self.new_name = new_name
     def process(self,data):
-        return data.rename(columns = { self.column, self.new_name}, inplace = True)
+        return data.rename(columns = {self.column: self.new_name}, inplace = True)
