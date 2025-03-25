@@ -9,6 +9,8 @@ with open("backend/models/linear_regression_model.pkl", "rb") as f:
     model = pickle.load(f)
     print("Linear Regression Model loaded successfully")
 
+diabetes_df = pd.read_csv('backend\data\datasets\diabetes.csv')
+
 # Main page
 @app.route("/") 
 def index():
@@ -45,7 +47,8 @@ def predict():
             "result.html",
             prediction=prediction,
             form_data=form_data,
-            chart=chart
+            chart=chart,
+            data=diabetes_df
         )
     
     # Error handling, return page with an error message
