@@ -35,6 +35,7 @@ def predict():
         # Get prediction
         data_features = pd.DataFrame([form_data])
         prediction = model.predict(data_features)
+        prediction = round(prediction[0], 1) # 1d.p same as dataset
         
         # Sample chart (this is just placeholder for now)
         chart = "Visualization placeholder"
