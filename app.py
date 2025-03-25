@@ -4,14 +4,17 @@ import pickle
 
 app = Flask(__name__)
 
+# Loading in model
+with open("backend/models/linear_regression_model.pkl", "rb") as f:
+    model = pickle.load(f)
+    print("Linear Regression Model loaded successfully")
+
 # Main page
 @app.route("/") 
 def index():
     return render_template("index.html")
 
-#### TEMPORARY return in place of model prediction
 # This adds a POST (send to api) prediction endpoint
-# For now it returns a dummy reponse while ML model is made
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
@@ -28,12 +31,10 @@ def predict():
             'ltg': float(request.form["ltg"]),
             'glu': float(request.form["glu"])
         }
-        
 
-        with open("backend/models/linear_regression_model,pkl", "rb") as f:
-             model = pickle.load(f)
-
-        prediction = model.predict(form_data)
+        # Get prediction
+        data_features = pd.DataFrame([form_data])
+        prediction = model.predict(data_features)
         
         # Sample chart (this is just placeholder for now)
         chart = "Visualization placeholder"
@@ -46,25 +47,13 @@ def predict():
             chart=chart
         )
     
-    # Error handling, return a 404 page like tab with an error message
+    # Error handling, return page with an error message
     except Exception as e:
         print("Error:", str(e))
         return render_template(
             "error.html",
             error=str(e)
         )
-
-
-# GET endpoint that gives sample data for visualization, a small dataset to be specific
-@app.route("/api/data", methods=["GET"])
-def get_data():
-    data = [
-        {"age": 45, "bmi": 22.5, "glu": 5.2, "target": 0},
-        {"age": 55, "bmi": 32.1, "glu": 7.8, "target": 1},
-        {"age": 35, "bmi": 24.3, "glu": 4.9, "target": 0}
-    ]
-    
-    return {"data": data}
 
 
 if __name__ == '__main__':
