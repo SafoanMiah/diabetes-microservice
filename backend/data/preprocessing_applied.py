@@ -21,4 +21,5 @@ cleaned_df = (
     .build()
 )
 
-print(cleaned_df)
+# Saving the cleaned datafram to a CSV
+cleaned_df.to_csv("datasets/diabetes.csv", index=False)

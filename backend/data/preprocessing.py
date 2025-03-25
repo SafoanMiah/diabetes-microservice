@@ -40,7 +40,7 @@ class DataPreProcessingBuilder:
         return self
 
     def build(self):
-        return DataPreProcessing(self.data, self.processors) #puts all the components together by giving an instance of the DataProcessing
+        return DataPreProcessing(self.data, self.processors).clean() #puts all the components together by giving an instance of the DataProcessing
         # class the necessary instance variables to actually produce something
 
 # Abstract Component
