@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, flash, redirect
 import pandas as pd
+import pickle
 
 app = Flask(__name__)
 
@@ -28,8 +29,11 @@ def predict():
             'glu': float(request.form["glu"])
         }
         
-        # Return a dummy prediction (0 = low risk, 1 = high risk)
-        prediction = 0
+
+        with open("backend/models/linear_regression_model,pkl", "rb") as f:
+             model = pickle.load(f)
+
+        prediction = model.predict(form_data)
         
         # Sample chart (this is just placeholder for now)
         chart = "Visualization placeholder"

@@ -14,7 +14,7 @@ model = LinearRegression()
 model.fit(X_train, y_train)
 
 with open("linear_regression_model.pkl", "wb") as f:
-    pickle.dump(model, f)
+   pickle.dump(model,f)
 
 
 
