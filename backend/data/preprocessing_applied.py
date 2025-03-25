@@ -11,15 +11,14 @@ df = loader.df
 # init builder
 builder = DataPreProcessingBuilder()
 
-# Preprocessing steps: handle null values, remove duplicates, convert to float, trim whitespaces
+# Preprocessing steps: handle null values, remove duplicates, convert to float
 cleaned_df = (
     builder
     .load_df(df)
     .null_data()
     .remove_duplicates()
     .to_float()
-    .white_spaces()
     .build()
 )
 
-print(cleaned_df.co)
+print(cleaned_df)

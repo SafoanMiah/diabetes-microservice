@@ -35,10 +35,6 @@ class DataPreProcessingBuilder:
         self.processors.append(ConversiontoFloats())
         return self
 
-    def white_spaces(self):
-        self.processors.append(WhitespaceCleaner())
-        return self
-
     def drop_column(self, column):
         self.processors.append(DropColumn(column))
         return self
