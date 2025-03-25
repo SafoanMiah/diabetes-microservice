@@ -23,23 +23,9 @@ Page shown on sucessful prediction, it contains:
     <h3 class="subheader">Prediction & Analysis</h3>
     
     <!-- Prediction Result -->
-    <div class="mb-8">
-
-        <!-- 1 High Risk, 0 Low Risk-->
-
-        {% if prediction == 1 %}
-        <div class="bg-red-100 text-red-700 p-4 rounded-lg">
-            <p class="font-bold text-xl">High Risk of Diabetes</p>
-            <p>Based on the parameters input, the model predicts a high risk of diabetes</p>
-        </div>
-
-        {% else %}
-        <div class="bg-green-100 text-green-700 p-4 rounded-lg">
-            <p class="font-bold text-xl">Low Risk of Diabetes</p>
-            <p>Based on the provided parameters, the model predicts a low risk of diabetes.</p>
-        </div>
-
-        {% endif %}
+    <div class="bg-green-100 text-green-700 p-4 rounded-lg mb-8">
+        <p class="font-bold text-xl">Prediction: {{ prediction }}</p>
+        <p>This indicates a quantitative measure of disease progression one year after baseline.</p>
     </div>
     
     <!-- Input Parameters -->
@@ -82,9 +68,12 @@ Page shown on sucessful prediction, it contains:
     </div>
     
     <!-- Visualization Container -->
-    <h4 class="font-bold text-lg mb-4">Visualization</h4>
+    <h4 class="font-bold text-lg mb-4">Model Visualization</h4>
     <div id="visualization" class="w-full h-96 mb-4 bg-gray-100 flex items-center justify-center">
-        <p class="text-gray-500">Temaplte for visualization div</p>
+        <p class="text-gray-500"> {{ chart }}</p>
+
+        
+
     </div>
     
     <div class="flex">

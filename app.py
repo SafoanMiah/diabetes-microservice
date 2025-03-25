@@ -39,7 +39,7 @@ def predict():
         # Sample chart (this is just placeholder for now)
         chart = "Visualization placeholder"
         
-        # Return the result template with all the data
+        # Return the result page with all the data
         return render_template(
             "result.html",
             prediction=prediction,
@@ -49,7 +49,6 @@ def predict():
     
     # Error handling, return page with an error message
     except Exception as e:
-        print("Error:", str(e))
         return render_template(
             "error.html",
             error=str(e)
@@ -57,4 +56,4 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(debug=True) # for live updates
+    app.run(debug=True) # live updates
