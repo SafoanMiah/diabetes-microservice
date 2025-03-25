@@ -1,8 +1,10 @@
-
 import pandas as pd
 import pickle
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
+
+
+# simple linear model as showcase
 
 diabetes_df =  pd.read_csv("backend/data/datasets/diabetes.csv")
 
@@ -13,8 +15,5 @@ X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.25, rando
 model = LinearRegression()
 model.fit(X_train, y_train)
 
-with open("linear_regression_model.pkl", "wb") as f:
+with open("backend/models/linear_regression_model.pkl", "wb") as f:
    pickle.dump(model,f)
-
-
-
