@@ -16,7 +16,6 @@ class DataPreProcessingBuilder:
     def __init__(self):
         self.processors = []
         self.data = None
-        self.datetime = None
 
     #you may note that  load_data is not decoupled from a component, it's because their purpose is not to clean the entire dataframe.
     def load_df(self, data):
@@ -33,10 +32,6 @@ class DataPreProcessingBuilder:
 
     def to_float(self):
         self.processors.append(ConversiontoFloats())
-        return self
-
-    def white_spaces(self):
-        self.processors.append(WhitespaceCleaner())
         return self
 
     def drop_column(self, column):
@@ -66,10 +61,6 @@ class RemoveDuplicates(DataProcessor):
 class ConversiontoFloats(DataProcessor):
     def process(self,data):
         return data.astype(float)
-
-class WhitespaceCleaner(DataProcessor):
-    def process (self, data):
-        return data.strip()
 
 class DropColumn(DataProcessor):
     def __init__(self,column):
