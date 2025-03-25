@@ -28,13 +28,12 @@ def predict():
             'glu': float(request.form["glu"])
         }
         
-        # Return a dummy prediction (0 = low risk, 1 = high risk)
         prediction = 0
         
         # Sample chart (this is just placeholder for now)
         chart = "Visualization placeholder"
         
-        # Return the result template with all the data
+        # Return the result page with all the data
         return render_template(
             "result.html",
             prediction=prediction,
@@ -42,26 +41,12 @@ def predict():
             chart=chart
         )
     
-    # Error handling, return a 404 page like tab with an error message
+    # Incase of any errors show this error.html page
     except Exception as e:
-        print("Error:", str(e))
         return render_template(
             "error.html",
             error=str(e)
         )
 
-
-# GET endpoint that gives sample data for visualization, a small dataset to be specific
-@app.route("/api/data", methods=["GET"])
-def get_data():
-    data = [
-        {"age": 45, "bmi": 22.5, "glu": 5.2, "target": 0},
-        {"age": 55, "bmi": 32.1, "glu": 7.8, "target": 1},
-        {"age": 35, "bmi": 24.3, "glu": 4.9, "target": 0}
-    ]
-    
-    return {"data": data}
-
-
 if __name__ == '__main__':
-    app.run(debug=True) # for live updates
+    app.run(debug=True) # live updates
