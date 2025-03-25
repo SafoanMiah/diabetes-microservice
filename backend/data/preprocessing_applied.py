@@ -8,18 +8,11 @@ import pandas as pd
 # load the dataset
 df = loader.df
 
-# init builder
 builder = DataPreProcessingBuilder()
 
-# Preprocessing steps: handle null values, remove duplicates, convert to float
-cleaned_df = (
-    builder
-    .load_df(df)
-    .null_data()
-    .remove_duplicates()
-    .to_float()
-    .build()
-)
+cleaning = builder.load_df(df).null_data().remove_duplicates().rename_column("s1", "tc").to_float().build()
+cleaned_df = cleaning.clean()
 
 # Saving the cleaned datafram to a CSV
 cleaned_df.to_csv("datasets/diabetes.csv", index=False)
+

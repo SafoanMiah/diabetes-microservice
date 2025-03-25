@@ -16,7 +16,6 @@ class DataPreProcessingBuilder:
     def __init__(self):
         self.processors = []
         self.data = None
-        self.datetime = None
 
     #you may note that  load_data is not decoupled from a component, it's because their purpose is not to clean the entire dataframe.
     def load_df(self, data):
@@ -67,10 +66,6 @@ class ConversiontoFloats(DataProcessor):
     def process(self,data):
         return data.astype(float)
 
-class WhitespaceCleaner(DataProcessor):
-    def process (self, data):
-        return data.strip()
-
 class DropColumn(DataProcessor):
     def __init__(self,column):
         self.column = column #the way the processor is set up is it's a loop that will apply to the entire dataframe and so the picking of a specific column to drop is easier implemented here.
@@ -82,4 +77,4 @@ class RenameColumn(DataProcessor):
         self.column = column #the way the processor is set up is it's a loop that will apply to the entire dataframe and so the picking of a specific column to drop is easier implemented here.
         self.new_name = new_name
     def process(self,data):
-        return data.rename(columns = { self.column, self.new_name}, inplace = True)
+        return data.rename(columns = {self.column: self.new_name}, inplace = True)
