@@ -1,0 +1,70 @@
+<!-- Main page for inputting data for the user to use -->
+
+{% extends "base.html" %}
+
+{% block title %}Input{% endblock %}
+
+{% block content %}
+<!-- Input Form Section -->
+<div class="bg-white rounded-lg p-6">
+    <h3 class="subheader">Enter Patient Data</h3>
+
+    <form action="/predict" method="POST" class="space-y-10">
+
+        <div class="grid grid-cols-2 gap-4">
+            <!-- Multiple divs used for thier own section in the grid -->
+            <div>
+                <label for="age" class="form-label">Age (years)</label>
+                <input type="number" name="age" class="form-input" required>
+            </div>
+            <div>
+                <label for="sex" class="form-label">Sex (male/female)</label>
+                <select name="sex" class="form-input" required>
+                    <option value=""></option>
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                </select>
+            </div>
+            <div>
+                <label for="bmi" class="form-label">Body Mass Index (kg/m²)</label>
+                <input type="number"  name="bmi" class="form-input" required>
+            </div>
+            <div>
+                <label for="bp" class="form-label">Avg. Blood Pressure (mmHg)</label>
+                <input type="number" name="bp" class="form-input" required>
+            </div>
+            <div>
+                <label for="tc" class="form-label">Total Cholesterol (mmol/L)</label>
+                <input type="number" name="tc" class="form-input" required>
+            </div>
+            <div>
+                <label for="ldl" class="form-label">LDL (mmol/L)</label>
+                <input type="number" name="ldl" class="form-input" required>
+            </div>
+            <div>
+                <label for="hdl" class="form-label">HDL (mmol/L)</label>
+                <input type="number" name="hdl" class="form-input" required>
+            </div>
+            <div>
+                <label for="tch" class="form-label">Total Cholesterol / HDL</label>
+                <input type="number" name="tch" class="form-input" required>
+            </div>
+            <div>
+                <label for="ltg" class="form-label">Log of Triglycerides Level (mmol/L)</label>
+                <input type="number" name="ltg" class="form-input" required>
+            </div>
+            <div>
+                <label for="glu" class="form-label">Blood Sugar Level (mmol/L)</label>
+                <input type="number" name="glu" class="form-input" required>
+            </div>
+        </div>
+
+        <div class="flex">
+            <button type="submit" class="submit-button">
+                Get Prediction
+            </button>
+        </div>
+
+    </form>
+</div>
+{% endblock %}
