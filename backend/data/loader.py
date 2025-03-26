@@ -10,6 +10,3 @@ y = diabetes.target #literally refers to target which is the most important colu
 df = pd.DataFrame(x, columns = diabetes.feature_names) #creates pandas dataframe out of the arrays in x
 
 df["target"] = y #creates target column with target data in it which was not in x
-
-
-

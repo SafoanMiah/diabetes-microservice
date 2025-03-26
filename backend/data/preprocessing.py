@@ -31,4 +31,4 @@ cleaned_df = (
 )
 
 # Saving the cleaned datafram to a CSV
-cleaned_df.to_csv("backend/data/datasets/diabetes.csv", index=False)
+cleaned_df.to_json("backend/data/datasets/diabetes.json", index=False)
