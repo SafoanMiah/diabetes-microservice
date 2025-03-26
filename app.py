@@ -10,7 +10,7 @@ with open("backend/models/linear_regression_model.pkl", "rb") as f:
     model = pickle.load(f)
     print("Linear Regression Model loaded successfully")
 
-with open("templates/datasets/chart.json", "r") as f:
+with open("templates/chart/chart.json", "r") as f:
     diabetes_chart = json.load(f)
 
 # Main page
