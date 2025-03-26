@@ -2,12 +2,6 @@
 
 {% block title %}Prediction Results{% endblock %}
 
-{% block extra_head %}
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-{% endblock %}
-
 {% block content %}
 
 <div class="bg-white rounded-lg p-6 mb-8">
@@ -61,6 +55,10 @@
     <!-- Visualization Container -->
     <h4 class="font-bold text-lg mb-4">Model Visualization</h4>
     <div id="visualization" class="w-full h-auto bg-gray-100 p-4 rounded-lg flex justify-center items-center">
+
+        <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
         <div id="chart" class="rounded-lg"></div>
         <script>

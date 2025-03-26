@@ -12,7 +12,7 @@ cols = ['age', 'sex', 'bmi', 'bp', 'tc', 'ldl', 'hdl', 'tch', 'ltg', 'glu']
 # Altair parameter bound to a dropdown
 select_col = alt.param(
     name='Column',  # internal name for the parameter
-    bind=alt.binding_select(options=cols, name='Choose X-axis:', input='select'),  # 'select' to create a dropdown
+    bind=alt.binding_select(options=cols, name='Choose X-axis:'),  # 'select' to create a dropdown
     value='age'  # default selection
 )
 
