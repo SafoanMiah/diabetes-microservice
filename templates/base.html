@@ -9,6 +9,9 @@
     <title>Diabetes Microservice - {% block title %}{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
     <!--Had to be URL thus the mode to static-->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
@@ -31,9 +34,6 @@
             <p class="text-sm">Advanced Programming with Data Project - LDSCI5206</p>
         </div>
     </footer>
-
-    <!-- Favicon -->
-    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </body>
 
 </html>
