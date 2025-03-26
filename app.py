@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, flash, redirect
 import pickle
 import json
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -9,8 +10,8 @@ with open("backend/models/linear_regression_model.pkl", "rb") as f:
     model = pickle.load(f)
     print("Linear Regression Model loaded successfully")
 
-with open('backend/data/datasets/diabetes.csv', 'r') as f:
-    diabetes_data = json.load(f)
+with open("templates/datasets/chart.json", "r") as f:
+    diabetes_chart = json.load(f)
 
 # Main page
 @app.route("/") 
@@ -48,8 +49,7 @@ def predict():
             "result.html",
             prediction=prediction,
             form_data=form_data,
-            chart=chart,
-            data=diabetes_data
+            chart=diabetes_chart
         )
     
     # Error handling, return page with an error message

@@ -1,7 +1,7 @@
 #this is the implementation of the cleaning. It allows us to fiddle with how we want to use the builder
 #to cut up the code. I haven't used drop_column() but it would look like this: .drop_column("column name")
 
-from backend.data.builder import DataPreProcessingBuilder
+from builder import DataPreProcessingBuilder
 import loader
 import pandas as pd
 
@@ -30,5 +30,5 @@ cleaned_df = (
     .build()
 )
 
-# Saving the cleaned datafram to a CSV
+# Saving the cleaned datafram to a JSON
 cleaned_df.to_json("backend/data/datasets/diabetes.json", index=False)
