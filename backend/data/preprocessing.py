@@ -4,10 +4,10 @@
 from builder import DataPreProcessingBuilder
 import loader
 
-# load the dataset
+# load the dataset from the loader file which is a pandas dataframe
 df = loader.df
 
-# init builder
+# initialise builder
 builder = DataPreProcessingBuilder()
 
 # Preprocessing steps: handle null values, remove duplicates, convert to float
@@ -27,5 +27,5 @@ cleaned_df = (
     .build()
 )
 
-# Saving the cleaned datafram to a JSON
+# Saving the cleaned dataframe to a JSON
 cleaned_df.to_json("backend/data/datasets/diabetes.json", index=False)

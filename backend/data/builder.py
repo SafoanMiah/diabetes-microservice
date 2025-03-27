@@ -8,7 +8,9 @@ class DataPreProcessing:
 
     def clean(self):
         result = self.data
-        for processor in self.pipeline:
+        for (
+            processor
+        ) in self.pipeline:  # applies the different processors to the dataframe
             result = processor.process(result)
         return result
 
@@ -21,7 +23,7 @@ class DataPreProcessingBuilder:
 
     # you may note that  load_data is not decoupled from a component, it's because their purpose is not to clean the entire dataframe.
     def load_df(self, data):
-        self.data = data
+        self.data = data  # it's simply providing the data for the rest of the processors to clean.
         return self
 
     def null_data(self):
