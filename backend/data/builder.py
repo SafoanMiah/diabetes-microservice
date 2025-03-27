@@ -45,6 +45,7 @@ class DataPreProcessingBuilder:
     def build(self):
         return DataPreProcessing(self.data, self.processors).clean() #puts all the components together by giving an instance of the DataProcessing
         # class and giving it the processors the user has decided to implement.
+        #using the .clean() method here ensures that it's not forgotten as its essential to the actual recreation of the dataframe
 
 # Abstract Component
 class DataProcessor(ABC): #creates a template for which to create components as the DataPreProcessing builder will always use the .process() method

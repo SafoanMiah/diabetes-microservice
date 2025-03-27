@@ -5,16 +5,16 @@ from builder import DataPreProcessingBuilder
 import loader
 import pandas as pd
 
-# load the dataset
+# load the dataset from the loader file which is a pandas dataframe
 df = loader.df
 
-# init builder
+# initialise builder
 builder = DataPreProcessingBuilder()
 
 # Preprocessing steps: handle null values, remove duplicates, convert to float
 cleaned_df = (
     builder
-    .load_df(df)
+    .load_df(df) #has to go first
     .null_data()
     .remove_duplicates()
     .to_float()
@@ -27,8 +27,8 @@ cleaned_df = (
     .rename_column('s4', 'tch')
     .rename_column('s5', 'ltg')
     .rename_column('s6', 'glu')
-    .build()
+    .build() #has to go last.
 )
 
-# Saving the cleaned datafram to a JSON
+# Saving the cleaned dataframe to a JSON
 cleaned_df.to_json("backend/data/datasets/diabetes.json", index=False)
