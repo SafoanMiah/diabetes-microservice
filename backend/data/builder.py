@@ -7,7 +7,7 @@ class DataPreProcessing:
 
     def clean(self):
         result = self.data
-        for processor in self.pipeline:
+        for processor in self.pipeline: #applies the different processors to the dataframe
             result = processor.process(result)
         return result
 
@@ -17,14 +17,14 @@ class DataPreProcessingBuilder:
         self.processors = []
         self.data = None
 
-    #you may note that  load_data is not decoupled from a component, it's because their purpose is not to clean the entire dataframe.
+    #you may note that load_data is not linked to a component, it's because their purpose is not to clean the entire dataframe.
     def load_df(self, data):
-        self.data = data
+        self.data = data #it's simply providing the data for the rest of the processors to clean.
         return self
 
     def null_data(self):
         self.processors.append(NullData()) #adds the class NullData to the list processors in order for it to be implemented on the data
-        return self   #if the method is called by the user then the cleaning operation will not be conducted.
+        return self   #if the method is not called by the user then the cleaning operation will not be conducted.
 
     def remove_duplicates(self):
         self.processors.append(RemoveDuplicates())
@@ -44,7 +44,7 @@ class DataPreProcessingBuilder:
 
     def build(self):
         return DataPreProcessing(self.data, self.processors).clean() #puts all the components together by giving an instance of the DataProcessing
-        # class the necessary instance variables to actually produce something
+        # class and giving it the processors the user has decided to implement.
 
 # Abstract Component
 class DataProcessor(ABC): #creates a template for which to create components as the DataPreProcessing builder will always use the .process() method
@@ -77,4 +77,4 @@ class RenameColumn(DataProcessor):
         self.column = column #the way the processor is set up is it's a loop that will apply to the entire dataframe and so the picking of a specific column to drop is easier implemented here.
         self.new_name = new_name
     def process(self,data):
-        return data.rename(columns = {self.column: self.new_name})
+        return data.rename(columns = {self.column: self.new_name}) #implementation of the rename function. needs to be a dictionary.
